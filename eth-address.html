@@ -1,0 +1,101 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+
+<dom-module id="eth-address">
+
+  <template>
+
+    <style>
+      /* shadow DOM styles go here */
+      :host {
+        display: inline-block;
+      }
+
+      :host > div {
+        position: relative;
+      }
+
+      :host .identicon {
+        display: none;
+      }
+      :host([identicon]) .identicon {
+        background-color: gray;
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+      }
+
+      :host([valid]) input {
+        background-color: green;
+      }
+
+      :host input {
+        border-width: var(--input-border-width, 1px 1px 1px 1px);
+        border-color: var(--input-border-color, initial);
+        background-color: var(--input-background-color, #fff);
+        padding: var(--input-padding, 1px);
+        font-size: var(--input-font-size, normal);
+        color: var(--input-color, normal);
+      }
+      :host input:focus {
+        border-color: var(--input-focus-border-color, #222);
+      }
+
+      :host .qr-icon {
+        display: none;
+      }
+      :host([qr-code]) .qr-icon {
+        display: inline-block;
+        height: var(--qr-icon-size, 14px);
+        width: var(--qr-icon-size, 14px);
+        position: absolute;
+        top: 50%;
+        right: var(--qr-icon-right, 6px);
+        margin-top: var(--qr-icon-margin-top, -7px);
+        border: none;
+        background-size: contain;
+        background-color: transparent;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAuJJREFUeAHtWztLXEEUXh9FGmNhzA8ImDKFhWIhbBCEmNpCFCGNvSD6K7S3EUuT/ICFQEhvQkAIRET8ASqxsZKAng9cdvbcc+887tznzMBl57xmzvl2XufubKfT6TxW8ExTn7xsEqNsX3qj3IvQ6AhAaN84j3ecM4hep+dc4LuyZsjwxMF4jWwuHOyyTLZJuKEqSAAg+N+qUs76f0f7v2R35mibZnbNBXEN4IiERktTgGPQJcY8Z2bQpyT7kSF3Fb0nwzlL4yPSv8myMQHgAzWwm9UIkx0QXQQAK9TuDutLR/ZIIROAuAboIKyRfKQIX5o0ApAneC9NAsB78GiwSQDEKVDEEGjSCCgi/jgFmjQC4i5QxBwwOQr/oo6PLTpHLlBEsfUDPtzpHDEB4Cs1gqfq8pkcwOO1NGkN8Bp4v7HgAZCmAN7hub7G6gOrfr5VCYs67Hyv/InfIyQAXF5gWsRlrPrFWDOHYvBTIAKQY/S0whQpZmJhKCGyW+qDL3AviDdRQt9qFw8qEesRgYhAeAhgEfxZQdjL1Keaqb0kWpdw7ZPON42vUyS3zkaxGpf98J3nlYEPnzTBQ/zaoJ2hWONByADVVqtIyRBuZuBygq+CrK6UxMbFYQkAXEvxeTODn/hc/CzMJq4BhUHbkIalKcBd7xLjI2dq6EOSX2p0VDGSku8qQ6hDZ1Xgq6xJlTCtD+2LZDTLDPeI5jo6eklp451gz88BinpqFcHr+rWWxzUgFe9ABHEEBPJFp4YZ/Agw2QZT0auR4J58+ZPhD7LEN5K8LQAg+AUpwGfeFn3ibJIodQIALzPGEh4OGE6HnIG5XKsTAHiTIw5T2XU/3OAXweABMJkCuHKOW9c25cpGuUpdEwBuyEE8rSwmAJQVeJ6rsNjnsdWllcU0QZ0AQCrrWrB7iPu8rkEJAPy17FpnaCF3yf0tms+nKgEw9L+6fM3X3zr4bTB4ADAF/lUwUPMseF7dfQK9mdcC4oiKvgAAAABJRU5ErkJggg==');
+      }
+    </style>
+
+    <!-- shadow DOM goes here -->
+    <div>
+      <span class="identicon"></span>
+      <button class="qr-icon"></button>
+      <input type="text" size="42">
+
+    </div>
+  </template>
+
+  <script>
+    class EthAddress extends Polymer.Element {
+      constructor() {
+        super();
+        this.addEventListener('input', e => this.inputListener(e));
+        console.log('log', this, this.children);
+      }
+
+      inputListener(e) {
+        console.log('input event fired', e);
+      }
+
+      static get is() {
+        return "eth-address";
+      }
+      static get properties() {
+        return {
+          valid: {
+            type: Boolean,
+            value: true
+          },
+          toggleIcon: {
+            type: String
+          }
+        }
+      }
+    }
+    customElements.define(EthAddress.is, EthAddress);
+  </script>
+</dom-module>

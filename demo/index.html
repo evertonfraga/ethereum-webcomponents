@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script>
+      /*
+      window.Polymer = window.Polymer || {};
+      window.Polymer.dom = 'shadow';
+      */
+    </script>
+    <link rel="import" href="demo-element.html">
+    <style>
+      body {
+        font-family: 'Helvetica Neue', Helvetica;
+        font-weight: 300;
+      }
+      h1 {
+        font-weight: normal;
+        color: #444;
+      }
+      eth-address.my-custom-style {
+        --input-border-width: 0 0 2px 0;
+        --input-border-color: #02a8f3;
+        --input-focus-border-color: #ccc6c6;
+        --input-background-color: #f5f4f2;
+        --input-padding: 15px;
+        --input-font-size: 24px;
+        --input-color: #02a8f3;
+        --qr-icon-size: 22px;
+        --qr-icon-margin-top: -11px;
+        --qr-icon-right: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Input &lt;eth-address&gt;</h1>
+    <eth-address></eth-address>
+
+    <h1>Input &lt;eth-address identicon&gt;</h1>
+    <eth-address identicon></eth-address>
+
+
+    <h1>&lt;eth-address&gt; with custom style</h1>
+    <eth-address identicon class="my-custom-style" qr-code></eth-address>
+
+
+    <h1>Input &lt;eth-address placeholder="..." qr-code&gt;</h1>
+    <eth-address qr-code placeholder="Type your address..."></eth-address>
+
+    <p>
+      <span>0x83925de9986d157f6b586bde2a0b0003a13c07c6</span>
+    </p>
+
+  </body>
+</html>
