@@ -19,12 +19,16 @@
         display: none;
       }
       :host([identicon]) .identicon {
-        background-color: gray;
         display: inline-block;
-        width: 32px;
-        height: 32px;
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        left: 6px;
+        top: 50%;
+        /*margin-top: ;*/
+        background-color: gray;
         border-radius: 50%;
-      }
+      }JS demise support
 
       :host([valid]) input {
         background-color: green;
@@ -35,8 +39,10 @@
         border-color: var(--input-border-color, initial);
         background-color: var(--input-background-color, #fff);
         padding: var(--input-padding, 1px);
-        font-size: var(--input-font-size, normal);
-        color: var(--input-color, normal);
+        font: inherit;
+        color: var(--input-color, inherit);
+        max-width: 100%;
+        box-sizing: border-box;
       }
       :host input:focus {
         border-color: var(--input-focus-border-color, #222);
@@ -65,7 +71,6 @@
       <span class="identicon"></span>
       <button class="qr-icon"></button>
       <input type="text" size="42">
-
     </div>
   </template>
 

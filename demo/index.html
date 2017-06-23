@@ -8,7 +8,9 @@
       window.Polymer.dom = 'shadow';
       */
     </script>
+
     <link rel="import" href="demo-element.html">
+
     <style>
       body {
         font-family: 'Helvetica Neue', Helvetica;
@@ -30,6 +32,12 @@
         --qr-icon-margin-top: -11px;
         --qr-icon-right: 12px;
       }
+
+      eth-address.style-inheritance {
+        width: 220px;
+        color: red;
+        font-family: monospace;
+      }
     </style>
   </head>
   <body>
@@ -46,6 +54,9 @@
 
     <h1>Input &lt;eth-address placeholder="..." qr-code&gt;</h1>
     <eth-address qr-code placeholder="Type your address..."></eth-address>
+
+    <h1>Input &lt;eth-address&gt; inherits some CSS rules</h1>
+    <eth-address class="style-inheritance"></eth-address>
 
     <p>
       <span>0x83925de9986d157f6b586bde2a0b0003a13c07c6</span>
